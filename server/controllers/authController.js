@@ -1,11 +1,10 @@
-import { recoverPersonalSignature } from 'eth-sig-util';
+import { recoverPersonalSignature } from '@metamask/eth-sig-util';
 import { bufferToHex } from 'ethereumjs-util';
-import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-import { config } from '../../config';
-import { User } from '../../models/user.model';
 
+const config= ''
 class AuthController{
 	static  login = async (req, res, next) => {
 		const { signature, publicAddress } = req.body;

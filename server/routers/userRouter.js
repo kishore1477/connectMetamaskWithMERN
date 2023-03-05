@@ -1,16 +1,14 @@
 import express from 'express';
-import jwt from 'express-jwt';
 
-import { config } from '../../config';
-import * as controller from './userController.js';
+import UserController from '../controllers/userController.js';
 
  const userRouter = express.Router();
 
-userRouter.get('/',controller.find);
+// userRouter.get('/',UserController.find);
 
-userRouter.get('/:userId',jwt(config), controller.get);
+// userRouter.get('/:userId',  UserController.get);
 
-userRouter.post('/',controller.create);
+userRouter.post('/',UserController.create);
 
-userRouter.patch('/:userId',jwt(config), controller.patch);
+// userRouter.patch('/:userId',  UserController.patch);
 export default userRouter

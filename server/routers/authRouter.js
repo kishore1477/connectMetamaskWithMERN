@@ -1,8 +1,8 @@
 import express from 'express';
+import AuthController from '../controllers/authController.js';
 
-import * as controllers from './authController.js';
 
  const authRouter = express.Router();
 
-authRouter.post('/',controllers.login);
+authRouter.post('/',AuthController.login);
 export default authRouter

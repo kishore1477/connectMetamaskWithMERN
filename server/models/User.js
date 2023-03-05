@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 import mongoose from 'mongoose'
 // Define the schema
 const userSchema= new mongoose.Schema({
