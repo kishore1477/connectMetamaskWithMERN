@@ -19,10 +19,10 @@ const Login = ({ onLoggedIn }) => {
 // }
  
 
-const handleSignMessage =async(publicAddress)=>{
+const handleSignMessage =async(publicAddress, id)=>{
     try {
         const signature =  (web3 === null || web3 === void 0) ? void 0 :( await web3.eth.personal.sign(
-            
+            id,
             publicAddress,
             '' // MetaMask will ignore the password argument here
         ));
@@ -38,6 +38,7 @@ const handleSignMessage =async(publicAddress)=>{
  
 
 	const handleSignup = async (publicAddress) =>{
+        console.log("Public adress in signup", publicAddress)
 	const signRes =  await 	fetch(`${process.env.REACT_APP_BACKEND_URL}/users`, {
 			body: JSON.stringify({ publicAddress }),
 			headers: {
@@ -81,6 +82,7 @@ const handleSignMessage =async(publicAddress)=>{
 
 	const users=  await 	fetch(`${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`)
     const userJson = await users.json()
+    console.log("UserJson", userJson)
     if(userJson.length> 0){
 const user = userJson[0]
  if(user){
@@ -90,6 +92,12 @@ alert(`${user} already exist` )
     alert("User not already exist")
     const signRes = await handleSignup(publicAddress)
     console.log("signRes is ", signRes)
+    
+
+    const id = signRes.data._id
+
+    const SignMsgRes = await handleSignMessage(publicAddress,id)
+    console.log("SignMsgRes",SignMsgRes )
      }
      
 			 
