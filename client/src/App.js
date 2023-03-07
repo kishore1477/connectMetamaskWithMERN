@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react'
-// import doten
 import Profile from './Profile';
 import Login from './Login';
 function App() {
